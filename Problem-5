@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+#include <unordered_map>
+using namespace std;
+
+int firstNonRepeatingChar(string s) {
+    unordered_map<char, int> charCount;
+    for (char c : s) {
+        charCount[c]++;
+    }
+    for (int i = 0; i < s.length(); i++) {
+        if (charCount[s[i]] == 1)
+            return i;
+    }
+    return -1;
+}
+
+int main() {
+    string s = "swiss";
+    int result = firstNonRepeatingChar(s);
+    if (result != -1) {
+        cout << "The first non-repeating character is at index: " << result << endl;
+    } else {
+        cout << "No non-repeating character found." << endl;
+    }
+    return 0;
+}
